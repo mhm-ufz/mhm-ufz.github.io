@@ -1,8 +1,8 @@
 ---
 title: "Publications using mHM"
-excerpt: "Page not found."
+excerpt: "Publications using mHM."
 sitemap: false
-permalink: /paper.html
+permalink: /paper
 ---
 
 - Thober, S., Cuntz, M., Kelbling, M., Kumar, R., Mai, J. and Samaniego, L., 2019. The multiscale Routing Model mRM v1. 0: simple river routing at resolutions from 1 to 50 km. Geosci. Model Dev. Discuss., 2019, pp.1-26, in press, https://doi.org/10.5194/gmd-2019-13

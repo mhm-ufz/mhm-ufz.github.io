@@ -2,7 +2,7 @@
 title: "mHM Release Notes"
 excerpt: "All changes of mHM with each release."
 sitemap: false
-permalink: /release.html
+permalink: /release
 ---
 
 ## mHM v5.11.2 (Jul 2021)
