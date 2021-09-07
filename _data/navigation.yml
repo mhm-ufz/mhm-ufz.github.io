@@ -1,9 +1,21 @@
 main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title: "About"
-    url: /about/
+  - title: "Home"
+    url: /
+  - title: "Documentation"
+    url: https://mhm.pages.ufz.de/mhm
+  - title: "Guides"
+    url: guides/
+  - title: "Downloads"
+    url: https://git.ufz.de/mhm/mhm/-/releases
+  - title: "Discussions"
+    url: https://github.com/mhm-ufz/mhm/discussions
+
+guides:
+  - title: "Guides"
+    children:
+      - title: "Install on Windows 10"
+        url: /guides/install-win/
+      - title: "Install on Linux / MacOS"
+        url: /guides/install-unix/
+      - title: "Compile Instructions"
+        url: /guides/compile/
