@@ -6,6 +6,7 @@ title: "![image-right](/assets/images/mHM_textlogo.png){:.align-left}"
 excerpt: "Start using it today:<br>`conda install mhm`"
 
 header:
+  og_image: /assets/images/mHM_textlogo.png
   overlay_color: "#333"
   overlay_filter: "0.5"
   overlay_image: /assets/images/banner.png
