@@ -3,7 +3,7 @@ layout: splash
 permalink: /
 
 title: "![image-right](/assets/images/mHM_textlogo.png){:.align-left}"
-excerpt: "Start using it today:<br>`conda install mhm`"
+excerpt: "Start using it today:<br>[`conda install mhm`](/guides/)"
 
 header:
   og_image: /assets/images/mHM_textlogo.png
@@ -19,17 +19,17 @@ header:
 
 feature_row_1:
   - image_path: /assets/images/previews/paper.jpeg
-    alt: "paper"
+    alt: "Publications"
     title: "High Reputation"
     excerpt: "mHM is a well established hydrological model used by the scientific community."
-    url: "paper/"
+    url: "/about/publications/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/previews/dev.png
     alt: "Development"
     title: "Active Development"
     excerpt: "mHM is under active development with dozens of contributors."
-    url: "release/"
+    url: "/about/releases/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/previews/meet.png

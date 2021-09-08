@@ -1,51 +1,53 @@
 ---
+permalink: /about/releases/
+
 title: "mHM Release Notes"
 excerpt: "All changes of mHM with each release."
-sitemap: false
-permalink: /release/
 ---
+
+Check out the whole development of mHM in the [GitLab repository](https://git.ufz.de/mhm/mhm).
 
 ## mHM v5.11.2 (Jul 2021)
 
 ### Enhancements
 
-- documentation modernized with [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) (!86)
-- cmake update to be able to install mHM (`cmake --install`) (!85)
-- added pFUnit tests thanks to Nicola Döring (!76)
-- link to a new [YouTube tutorial](https://youtu.be/FGJOcYEzbP4) for compiling mHM with cygwin by Mehmet Cüneyd Demirel added to the documentation (!74)
-- NetCDF output: add deflate and precision option to namelists (!73)
-- refactor cmake workflow (!72)
+- documentation modernized with [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) ([!86](https://git.ufz.de/mhm/mhm/-/merge_requests/86))
+- cmake update to be able to install mHM (`cmake --install`) ([!85](https://git.ufz.de/mhm/mhm/-/merge_requests/85))
+- added pFUnit tests thanks to Nicola Döring ([!76](https://git.ufz.de/mhm/mhm/-/merge_requests/76))
+- link to a new [YouTube tutorial](https://youtu.be/FGJOcYEzbP4) for compiling mHM with cygwin by Mehmet Cüneyd Demirel added to the documentation ([!74](https://git.ufz.de/mhm/mhm/-/merge_requests/74))
+- NetCDF output: add deflate and precision option to namelists ([!73](https://git.ufz.de/mhm/mhm/-/merge_requests/73))
+- refactor cmake workflow ([!72](https://git.ufz.de/mhm/mhm/-/merge_requests/72))
 
 ### Bugfixes
 
-- fixed: `mrm` tried to write output even if routing was switched off (!82)
-- unreachable `else` branch in `feddes_et_reduction` removed (!77)
-- unnecessary `inout` variable intent in `soil_moisture` removed (!77)
+- fixed: `mrm` tried to write output even if routing was switched off ([!82](https://git.ufz.de/mhm/mhm/-/merge_requests/82))
+- unreachable `else` branch in `feddes_et_reduction` removed ([!77](https://git.ufz.de/mhm/mhm/-/merge_requests/77))
+- unnecessary `inout` variable intent in `soil_moisture` removed ([!77](https://git.ufz.de/mhm/mhm/-/merge_requests/77))
 
 ## mHM v5.11.1 (Mar 2021)
 
 ### Enhancements
 
-- added compile information for cygwin (!68)
+- added compile information for cygwin ([!68](https://git.ufz.de/mhm/mhm/-/merge_requests/68))
 
 ### Bugfixes
 
 - removed note about mHM 5.10 from the README
-- smhorizon: tmp_rootfraccoef was corrected directly if it is not between 0 and 1, but actually  FCnorm should always be between 0 and 1 (!67)
+- smhorizon: tmp_rootfraccoef was corrected directly if it is not between 0 and 1, but actually  FCnorm should always be between 0 and 1 ([!67](https://git.ufz.de/mhm/mhm/-/merge_requests/67))
 
 ## mHM v5.11 (Feb 2021)
 
 ### Experimental Features
 
-- river temperature routing was implemented in an alpha version 0.1 (!37)
+- river temperature routing was implemented in an alpha version 0.1 ([!37](https://git.ufz.de/mhm/mhm/-/merge_requests/37))
   - this feature is in an experimental stage and should not be considered stable!
 
 ### Enhancements
 
-- introduced central version files `version.txt` and `version_data.txt` (!51)
-- added Feddes and global FC dependency on root fraction coef. at SM process(3)=4 (!43)
-- Online documentation generated with doxygen: https://mhm.pages.ufz.de/mhm/develop/ (!44)
-- CI/CD with GitLab Runner (!11, !13, !14, !28, !32, !48, !50)
+- introduced central version files `version.txt` and `version_data.txt` ([!51](https://git.ufz.de/mhm/mhm/-/merge_requests/51))
+- added Feddes and global FC dependency on root fraction coef. at SM process(3)=4 ([!43](https://git.ufz.de/mhm/mhm/-/merge_requests/43))
+- Online documentation generated with doxygen: <https://mhm.pages.ufz.de/mhm/develop/> ([!44](https://git.ufz.de/mhm/mhm/-/merge_requests/44))
+- CI/CD with GitLab Runner ([!11](https://git.ufz.de/mhm/mhm/-/merge_requests/11), [!13](https://git.ufz.de/mhm/mhm/-/merge_requests/13), [!14](https://git.ufz.de/mhm/mhm/-/merge_requests/14), [!28](https://git.ufz.de/mhm/mhm/-/merge_requests/28), [!32](https://git.ufz.de/mhm/mhm/-/merge_requests/32), [!48](https://git.ufz.de/mhm/mhm/-/merge_requests/48), [!50](https://git.ufz.de/mhm/mhm/-/merge_requests/50))
   - building on EVE for multiple compiler (GNU 7.3/8.3, Intel 18/19, NAG 6.2)
   - building debug/release serial/parallel
   - memcheck with valgrind
@@ -56,43 +58,43 @@ permalink: /release/
 - objective function for boxcox-transformed streamflow
 - post processing script for probabilistic forecasts
 - different module load scripts for EVE
-- Objective function from separate mhm calls (!7)
-- new data type for simulated gridded optidata (!10)
-- new datatype datetimeinfo (!16)
-- added module `mo_os` to check files and directories (!41, !57)
+- Objective function from separate mhm calls ([!7](https://git.ufz.de/mhm/mhm/-/merge_requests/7))
+- new data type for simulated gridded optidata ([!10](https://git.ufz.de/mhm/mhm/-/merge_requests/10))
+- new datatype datetimeinfo ([!16](https://git.ufz.de/mhm/mhm/-/merge_requests/16))
+- added module `mo_os` to check files and directories ([!41](https://git.ufz.de/mhm/mhm/-/merge_requests/41), [!57](https://git.ufz.de/mhm/mhm/-/merge_requests/57))
 
 ### Changes
 
 - internal: "basin" renamed to "domain"
-- TWS input file changed from ascii to netCDF (!9)
-- Switched to cell wise kge of et and tws in opti_function 33 (!12)
-- restart files are now given by name (!34)
-- removed mRM standalone and statically integrate mRM into mHM (!53)
-- removed the old makefile and legacy checking scripts (!55)
-- minimal Cmake version is now `3.12` (!58)
+- TWS input file changed from ascii to netCDF ([!9](https://git.ufz.de/mhm/mhm/-/merge_requests/9))
+- Switched to cell wise kge of et and tws in opti_function 33 ([!12](https://git.ufz.de/mhm/mhm/-/merge_requests/12))
+- restart files are now given by name ([!34](https://git.ufz.de/mhm/mhm/-/merge_requests/34))
+- removed mRM standalone and statically integrate mRM into mHM ([!53](https://git.ufz.de/mhm/mhm/-/merge_requests/53))
+- removed the old makefile and legacy checking scripts ([!55](https://git.ufz.de/mhm/mhm/-/merge_requests/55))
+- minimal Cmake version is now `3.12` ([!58](https://git.ufz.de/mhm/mhm/-/merge_requests/58))
 
 ### Bugfixes
 
-- Finalparam.nml is now written with specific format (Intel/GNU compatibility) (#40)
-- FinalParam.nml routing section bug fixed (#49, !25)
+- Finalparam.nml is now written with specific format (Intel/GNU compatibility) ([#40](https://git.ufz.de/mhm/mhm/-/issues/40))
+- FinalParam.nml routing section bug fixed ([#49](https://git.ufz.de/mhm/mhm/-/issues/49), [!25](https://git.ufz.de/mhm/mhm/-/merge_requests/25))
 - dirEvapotranspiration is now allocated before writing
 - cmake: netcdf link flags where separated by ";"
 - sharing of L0 domain now working
-- added L1_jarvis_thresh_c1 to restart file for process id 2 AND 3 (#29, !15)
-- allowing higher routing resolution than hydrology (!21)
-- domainID not set correctly for mRM if restart is activated (!30)
-- mHM states_fluxes netCDF output was curvilinear even if coordinate system is set to regular latlon (#98, !31)
-- missmatch in messages about written mhm fluxes (!42)
-- Fixing wrongly matched IDs from L1 to L11 when routing resolution (L11) is finer than L1 resolution (!45)
-- The length in net_startup was only cut in case there are less then 2 lengths (!46)
-- corrected unit attributes for lat lon variables (!47)
-- Allow run mHM and mRM without any observed gauge for processCase(8) = 2 / 3 (#27, !52)
+- added L1_jarvis_thresh_c1 to restart file for process id 2 AND 3 ([#29](https://git.ufz.de/mhm/mhm/-/issues/29), [!15](https://git.ufz.de/mhm/mhm/-/merge_requests/15))
+- allowing higher routing resolution than hydrology ([!21](https://git.ufz.de/mhm/mhm/-/merge_requests/21))
+- domainID not set correctly for mRM if restart is activated ([!30](https://git.ufz.de/mhm/mhm/-/merge_requests/30))
+- mHM states_fluxes netCDF output was curvilinear even if coordinate system is set to regular latlon ([#98](https://git.ufz.de/mhm/mhm/-/issues/98), [!31](https://git.ufz.de/mhm/mhm/-/merge_requests/31))
+- missmatch in messages about written mhm fluxes ([!42](https://git.ufz.de/mhm/mhm/-/merge_requests/42))
+- Fixing wrongly matched IDs from L1 to L11 when routing resolution (L11) is finer than L1 resolution ([!45](https://git.ufz.de/mhm/mhm/-/merge_requests/45))
+- The length in net_startup was only cut in case there are less then 2 lengths ([!46](https://git.ufz.de/mhm/mhm/-/merge_requests/46))
+- corrected unit attributes for lat lon variables ([!47](https://git.ufz.de/mhm/mhm/-/merge_requests/47))
+- Allow run mHM and mRM without any observed gauge for processCase(8) = 2 / 3 ([#27](https://git.ufz.de/mhm/mhm/-/issues/27), [!52](https://git.ufz.de/mhm/mhm/-/merge_requests/52))
 
 ## mHM v5.10 (June 2019)
 
 ### New Features:
 
-- New routing process introduced `processCase(8) = 3` [see Thober et al, 2019, GMDD, in press](https://doi.org/10.5194/gmd-2019-13) for more details
+- New routing process introduced `processCase(8) = 3` [see Thober et al, 2019, GMD, in press](https://doi.org/10.5194/gmd-2019-13) for more details
 - mRM is decoupled from mHM and mRM now resides in `deps/mrm` as an independent submodule [more information on handling submodules](https://git.ufz.de/howto/gitlab)
 - New option to compile mHM with cmake is provided, see more details under [cmake manual][1].
 - Visualization/animation R script (producing PDF and GIF) of mHM netcdf files included under post-proc [animate1.R][2]

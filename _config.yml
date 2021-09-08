@@ -39,6 +39,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 include:
   - _pages
   - _guides
+  - _about
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -91,6 +92,17 @@ defaults:
     values:
       sidebar:
         nav: guides
+      layout: single
+      classes: wide
+      author_profile: false
+
+  # _about
+  - scope:
+      path: "_about"
+      type: pages
+    values:
+      sidebar:
+        nav: about
       layout: single
       classes: wide
       author_profile: false

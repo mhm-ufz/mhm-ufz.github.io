@@ -1,14 +1,11 @@
 main:
   - title: "Home"
     url: /
-    children:
-      - title: "Publications using mHM"
-        url: /paper/
-      - title: "mHM Release Notes"
-        url: /release/
 
   - title: "Documentation"
     url: https://mhm.pages.ufz.de/mhm
+  - title: "About"
+    url: about/
   - title: "Guides"
     url: guides/
   - title: "Downloads"
@@ -25,3 +22,11 @@ guides:
         url: /guides/install-unix/
       - title: "Compile Instructions"
         url: /guides/compile/
+
+about:
+  - title: "About"
+    children:
+      - title: "Publications"
+        url: /about/publications/
+      - title: "Releases"
+        url: /about/releases/
