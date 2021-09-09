@@ -1,0 +1,31 @@
+# Authors
+
+Sebastian Müller:
+  name   : "Sebastian Müller"
+  avatar : "/assets/authors/MuellerSeb.jpeg"
+  bio    : "I'm a Model-Keeper at the Department for Computational Hydrosystems within the Helmholtz Centre for Environmental Research (UFZ) in Leipzig."
+  links: 
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/MuellerSeb"
+    - label: "UFZ"
+      icon: "fas fa-graduation-cap"
+      url: "https://www.ufz.de/index.php?en=38073"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:sebastian.mueller@ufz.de"
+
+mHM Admin:
+  name   : "mHM Admin"
+  avatar : "/assets/authors/mHM_admin.png"
+  bio    : "The virtual admin of mHM."
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/mhm-admin"
+    - label: "UFZ"
+      icon: "fas fa-graduation-cap"
+      url: "https://www.ufz.de/mhm"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:mhm-admin@ufz.de"

@@ -10,9 +10,10 @@ header:
   overlay_color: "#333"
   overlay_filter: "0.5"
   overlay_image: /assets/images/banner.png
+  caption: "Image credit: [**Luis E. Samaniego**](https://www.ufz.de/index.php?en=38094)"
   actions:
     - label: "<i class='fab fa-gitlab'></i> Documentation"
-      url: "https://mhm.pages.ufz.de/mhm/"
+      url: "/docs/"
     - label: "<i class='fab fa-gitlab'></i> Source Code"
       url: "https://git.ufz.de/mhm/mhm/"
       btn_class: "btn--success"
@@ -42,3 +43,11 @@ feature_row_1:
 ---
 
 {% include feature_row id="feature_row_1" %}
+
+# Latest News
+{: .text-center}
+<div class="grid__wrapper">
+  {% for post in site.posts limit:4 %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+</div>

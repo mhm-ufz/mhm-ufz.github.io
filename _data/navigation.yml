@@ -1,17 +1,18 @@
 main:
   - title: "Home"
     url: /
-
   - title: "Documentation"
-    url: https://mhm.pages.ufz.de/mhm
-  - title: "About"
-    url: about/
+    url: /docs/
+  - title: "News"
+    url: /news/
   - title: "Guides"
     url: guides/
   - title: "Downloads"
     url: https://git.ufz.de/mhm/mhm/-/releases
   - title: "Discussions"
     url: https://github.com/mhm-ufz/mhm/discussions
+  - title: "About"
+    url: about/
 
 guides:
   - title: "Guides"

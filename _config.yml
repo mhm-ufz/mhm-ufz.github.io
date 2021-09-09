@@ -36,6 +36,31 @@ paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
+repository: mhm-ufz/mhm-ufz.github.io
+
+# <script src="https://giscus.app/client.js"
+#         data-repo="mhm-ufz/mhm-ufz.github.io"
+#         data-repo-id="MDEwOlJlcG9zaXRvcnk0MDM5MjQ3ODU="
+#         data-category="website"
+#         data-category-id="DIC_kwDOGBNnMc4B-_3Y"
+#         data-mapping="pathname"
+#         data-reactions-enabled="1"
+#         data-emit-metadata="0"
+#         data-theme="dark"
+#         crossorigin="anonymous"
+#         async>
+# </script>
+
+comments:
+  provider: "giscus"
+  giscus:
+    repo_id              : "MDEwOlJlcG9zaXRvcnk0MDM5MjQ3ODU="
+    category_name        : "website"
+    category_id          : "DIC_kwDOGBNnMc4B-_3Y"
+    discussion_term      : "pathname"
+    reactions_enabled    : "1"
+    theme                : "dark"
+
 include:
   - _pages
   - _guides
@@ -106,6 +131,19 @@ defaults:
       layout: single
       classes: wide
       author_profile: false
+
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      breadcrumbs: false
+      author_profile: true
+      read_time: false
+      comments: true
+      share: false
+      related: false
 
 atom_feed:
   hide: true
