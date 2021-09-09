@@ -29,7 +29,7 @@ logo: /assets/images/mhm-logo_minimal.png
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -60,6 +60,21 @@ comments:
     discussion_term      : "pathname"
     reactions_enabled    : "1"
     theme                : "dark"
+
+author:
+  name   : "mHM Admin"
+  avatar : "/assets/authors/mHM_admin.png"
+  bio    : "The virtual admin of mHM."
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/mhm-admin"
+    - label: "UFZ"
+      icon: "fas fa-graduation-cap"
+      url: "https://www.ufz.de/mhm"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:mhm-admin@ufz.de"
 
 include:
   - _pages

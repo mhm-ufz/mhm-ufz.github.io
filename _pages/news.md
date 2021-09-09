@@ -2,5 +2,5 @@
 title: "News"
 permalink: /news/
 layout: home
-author_profile: false
+author_profile: true
 ---
