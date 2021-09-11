@@ -38,19 +38,6 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 repository: mhm-ufz/mhm-ufz.github.io
 
-# <script src="https://giscus.app/client.js"
-#         data-repo="mhm-ufz/mhm-ufz.github.io"
-#         data-repo-id="MDEwOlJlcG9zaXRvcnk0MDM5MjQ3ODU="
-#         data-category="website"
-#         data-category-id="DIC_kwDOGBNnMc4B-_3Y"
-#         data-mapping="pathname"
-#         data-reactions-enabled="1"
-#         data-emit-metadata="0"
-#         data-theme="dark"
-#         crossorigin="anonymous"
-#         async>
-# </script>
-
 comments:
   provider: "giscus"
   giscus:
@@ -149,9 +136,10 @@ defaults:
 
   # _posts
   - scope:
-      path: ""
+      path: "_posts"
       type: posts
     values:
+      permalink: /news/:name
       layout: single
       breadcrumbs: false
       author_profile: true
