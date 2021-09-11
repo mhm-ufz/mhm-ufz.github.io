@@ -3,7 +3,7 @@ layout: splash
 permalink: /
 
 title: "![image-right](/assets/images/mHM_textlogo.png){:.align-left}"
-excerpt: "Start using it today:<br>[`conda install mhm`](/guides/)"
+excerpt: "[Start using it today](/guides/):<br><code style='background-color:#00579d;'>conda install mhm</code>"
 
 header:
   og_image: /assets/images/mHM_textlogo.png
