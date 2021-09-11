@@ -1,2 +1,9 @@
 <link rel="icon" href="{{ site.url }}{{ site.baseurl }}/assets/images/favicon.ico">
 <!-- <base target="_blank"/> -->
+<!-- Dark mode -->
+{% if site.minimal_mistakes_skin_dark %}
+  <meta name="color-scheme" content="light dark">
+  <style>
+    @import url("{{ '/assets/css/main2.css' | relative_url }}") (prefers-color-scheme: dark);
+  </style>
+{% endif %}
