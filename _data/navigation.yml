@@ -1,10 +1,10 @@
 main:
   - title: "Home"
     url: /
-  - title: "Documentation"
-    url: /docs/
   - title: "News"
     url: /news/
+  - title: "Documentation"
+    url: /docs/
   - title: "Guides"
     url: guides/
   - title: "Downloads"
@@ -16,6 +16,7 @@ main:
 
 guides:
   - title: "Guides"
+    url: guides/
     children:
       - title: "Install on Windows 10"
         url: /guides/install-win/
@@ -26,6 +27,7 @@ guides:
 
 about:
   - title: "About"
+    url: about/
     children:
       - title: "Publications"
         url: /about/publications/
