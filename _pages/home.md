@@ -2,8 +2,8 @@
 layout: splash
 permalink: /
 
-title: "![image-right](/assets/images/mHM_textlogo.png){:.align-left}"
-excerpt: "[Start using it today](/guides/):<br><code style='background-color:#00579d;'>conda install mhm</code>"
+title: "![The mesoscale Hydrologic Model - mHM](/assets/images/mHM_textlogo.png){:.align-left}"
+excerpt: "<span style='white-space:nowrap;'>Start using it today:</span><br>[<code style='background-color:rgba(0,0,0,0);'>conda install mhm</code>](guides){: .btn .btn--primary }"
 
 header:
   og_image: /assets/images/mHM_textlogo.png
