@@ -133,7 +133,7 @@ Phew! You finally have a Linux subsystem running in Windows 10. But before insta
     conda create -y --prefix ./mhm_env
     conda activate ./mhm_env
     conda config --add channels conda-forge
-    conda config --set channel priority strict
+    conda config --set channel_priority strict
     ```
 
     You just created the Conda environment called **mhm_env** in the current folder which has compilation of all the dependencies for mHM. If you have completed this step, you are just one step away from running mHM.
