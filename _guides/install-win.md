@@ -110,30 +110,28 @@ Phew! You finally have a Linux subsystem running in Windows 10. But before insta
 2.  In the Linux terminal, type or copy paste the following and press enter:
 
     ```bash
-    wget --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    wget --no-check-certificate https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-latest-$(uname)-$(uname -m).sh
     ```
 
-    Note: If the above web page doesn't work, go to [this website](https://docs.conda.io/en/latest/miniconda.html) in your Windows browser and copy download the link for the latest **Linux Installer** for miniconda. Replace the above web page address with this link.
+    Note: If the above web page doesn't work, go to [this website](https://github.com/conda-forge/miniforge) in your Windows browser and copy download the link for the latest **Linux Installer** for Miniforge. Replace the above web page address with this link.
 
-    To check whether this step worked, type `ls` to see the folder content of current directory. You should be able to see a file with .sh extension. This is the Linux installation script for Miniconda. Miniconda, or just Conda in short, will help in warp-speed installation of mHM in your Linux OS.
+    To check whether this step worked, type `ls` to see the folder content of current directory. You should be able to see a file with .sh extension. This is the Linux installation script for Miniforge. Miniforge, or just Conda in short, will help in warp-speed installation of mHM in your Linux OS.
 
     Hint: **wget** is the command that you can use to perform download directly from the terminal.
 
 3.  Now install Conda from the installer script by typing the following in the terminal:
 
     ```bash
-    bash Miniconda3-latest-Linux-x86_64.sh
+    bash Miniforge3-latest-$(uname)-$(uname -m).sh
     ```
 
-    If everything goes well, you should be able to see a folder named **miniconda** in your working folder. View it using **ls** as done previously. Great, Conda installation is done.
+    If everything goes well, you should be able to see a folder for Miniforge in your working folder. View it using **ls** as done previously. Great, Conda installation is done.
 
 4.  Now that you have Conda to help you, create a Conda environment with the following set of commands:
 
     ```bash
     conda create -y --prefix ./mhm_env
     conda activate ./mhm_env
-    conda config --add channels conda-forge
-    conda config --set channel_priority strict
     ```
 
     You just created the Conda environment called **mhm_env** in the current folder which has compilation of all the dependencies for mHM. If you have completed this step, you are just one step away from running mHM.

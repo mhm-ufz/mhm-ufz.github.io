@@ -70,7 +70,7 @@ Then you can follow the install instructions for Ubuntu from above.
 If you rather want to use [Cygwin](https://www.cygwin.com/)
 (tool providing Linux functionality on Windows), step-by-step guidelines on
 how to install all Cygwin libraries can be viewed in [this youtube video](https://youtu.be/FGJOcYEzbP4)
-created by Mehmet Cüneyd Demirel (Istanbul Technical University) or see the separate *Cygwin details*.
+created by Mehmet Cüneyd Demirel (Istanbul Technical University).
 
 
 ### Module systems
