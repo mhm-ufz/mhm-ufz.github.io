@@ -7,6 +7,49 @@ excerpt: "All changes of mHM with each release."
 
 Check out the whole development of mHM in the [GitLab repository](https://git.ufz.de/mhm/mhm).
 
+
+## mHM v5.13.0 (May 2023)
+
+### Enhancements
+
+- added simple namelists in each test-domain folder for single domain run ([!144](https://git.ufz.de/mhm/mhm/-/merge_requests/144))
+  - can be run by `mhm ./test_domain`
+- Python bindings and wheel distribution for mHM ([!138](https://git.ufz.de/mhm/mhm/-/merge_requests/138))
+- updated FORCES to v0.5 ([!141](https://git.ufz.de/mhm/mhm/-/merge_requests/141), [!157](https://git.ufz.de/mhm/mhm/-/merge_requests/157))
+- added silent mode (`--quiet / -q`) ([!141](https://git.ufz.de/mhm/mhm/-/merge_requests/141))
+- Output: unification, selectable time reference point and bounds for all coordinates ([!139](https://git.ufz.de/mhm/mhm/-/merge_requests/139))
+  - added option `output_time_reference[_mrm]` to `m[h|r]m_outputs.nml` where users can now select the reference time stamp for the current time interval:
+    ```
+    location of reference time point in outputs:
+    0: start of the time interval (i.e. 1990-01-01 00:00 for daily output on 1990-01-01)
+    1: center of the time interval (i.e. 1990-01-01 12:00 for daily output on 1990-01-01)
+    2: end of the time interval (i.e. 1990-01-02 00:00 for daily output on 1990-01-01)
+    ```
+    - This will be `0` by default. Before it was always the end of the time interval -1h (that is why we always had 23h as timestamp)
+    - When using the start of the time interval we actually match the time-stamps of the gauge time-series (that was shifted in `discharge.nc`)
+    - When using center of time interval output unit may change to minutes (to get center of an hour)
+  - added `time_bnds` to all netcdf outputs to explicitly describe the time-span for the given time-stamp (following cf-conventions)
+  - addad `axis` attribute to all coordinates in all netcdf outputs (following cf-conventions)
+  - added `bounds` for all spatial coordinate axes (either easting/northing or lon/lat)
+  - unified output handling in `mo_nc_output`
+  - use new output handler for groundwater coupling
+- test-domain download helper command added with python-bindings `mhm-download` ([!149](https://git.ufz.de/mhm/mhm/-/merge_requests/149))
+- added a dependency install script `CI-scripts/install-deps` ([!152](https://git.ufz.de/mhm/mhm/-/merge_requests/152))
+- added demonstration script to optimize mHM with [Spotpy](https://github.com/thouska/spotpy) ([!145](https://git.ufz.de/mhm/mhm/-/merge_requests/145))
+
+### Changes
+
+- all errors are now printed to std-err and raise exit code 1 ([!141](https://git.ufz.de/mhm/mhm/-/merge_requests/141))
+- changed command line option short name for version from `-v` to `-V` (`-v` reserved for verbosity) ([!141](https://git.ufz.de/mhm/mhm/-/merge_requests/141))
+
+ ### Bugfixes
+
+- fixed indexing in groundwater coupling calculations ([!139](https://git.ufz.de/mhm/mhm/-/merge_requests/139))
+- fixed reading restart without original input files ([!154](https://git.ufz.de/mhm/mhm/-/merge_requests/154), [!156](https://git.ufz.de/mhm/mhm/-/merge_requests/156))
+- output: fixed single precision output writing ([!159](https://git.ufz.de/mhm/mhm/-/merge_requests/159))
+- several internal cleanups
+
+
 ## mHM v5.12.0 (Oct 2022)
 
 ### Enhancements
@@ -39,6 +82,7 @@ Check out the whole development of mHM in the [GitLab repository](https://git.uf
 - bug fix of mo_restart on reading the correct dimension of land-cover ([!121](https://git.ufz.de/mhm/mhm/-/merge_requests/121))
 - cmake doesn't alter `CMAKE_MODULE_PATH` anymore ([!122](https://git.ufz.de/mhm/mhm/-/merge_requests/122))
 - slope_tmp now allocated in L11_calc_celerity ([!110](https://git.ufz.de/mhm/mhm/-/merge_requests/110))
+
 
 ## mHM v5.11.2 (Jul 2021)
 
