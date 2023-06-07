@@ -1,6 +1,7 @@
 ---
 permalink: /guides/install-unix/
-
+toc: true
+toc_sticky: true
 title: "Install on Linux / MacOS"
 excerpt: "How to install mHM on Linux or MacOS using Conda."
 ---

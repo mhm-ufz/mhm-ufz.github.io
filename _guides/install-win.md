@@ -1,6 +1,7 @@
 ---
 permalink: /guides/install-win/
-
+toc: true
+toc_sticky: true
 title: "Install on Windows 10 with WSL2"
 excerpt: "How to install mHM on Windows 10 using Windows Subsystem for Linux and Conda."
 ---

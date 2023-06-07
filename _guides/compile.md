@@ -1,6 +1,7 @@
 ---
 permalink: /guides/compile/
-
+toc: true
+toc_sticky: true
 title: "Compile Instructions"
 excerpt: "General instructions on how to compile mHM."
 ---
