@@ -1,6 +1,7 @@
 ---
 permalink: /about/publications/
-
+classes: wide
+author_profile: false
 title: "Publications"
 excerpt: "Publications using mHM."
 ---

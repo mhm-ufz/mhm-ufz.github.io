@@ -122,8 +122,6 @@ defaults:
       sidebar:
         nav: guides
       layout: single
-      classes: wide
-      author_profile: false
 
   # _about
   - scope:
@@ -133,8 +131,6 @@ defaults:
       sidebar:
         nav: about
       layout: single
-      classes: wide
-      author_profile: false
 
   # _posts
   - scope:

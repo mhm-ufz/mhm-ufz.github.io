@@ -1,11 +1,12 @@
 ---
 permalink: /guides/
-
+classes: wide
+author_profile: false
 title: "Guides"
 excerpt: "Various Guides about mHM."
 ---
 
-Here can you find various pages explaining different things all about mHM.  
+Various guides on how to install mHM.
 If you have any Guides that should be added, let us know! We're always eager to expand our information provided.
 
 ## Pages

@@ -1,11 +1,12 @@
 ---
 permalink: /about/
-
+classes: wide
+author_profile: false
 title: "About"
 excerpt: "About mHM."
 ---
 
-Here can you find various pages showing different things all about mHM.  
+Here can you find various pages showing different things all about mHM.
 
 ## Team
 
