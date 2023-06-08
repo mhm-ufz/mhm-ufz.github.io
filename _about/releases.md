@@ -1,8 +1,6 @@
 ---
 permalink: /about/releases/
-toc: true
-toc_sticky: true
-author_profile: false
+
 title: "mHM Release Notes"
 excerpt: "All changes of mHM with each release."
 ---
