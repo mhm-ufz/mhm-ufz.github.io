@@ -5,7 +5,6 @@ toc_sticky: true
 author_profile: false
 title: "mHM Release Notes"
 excerpt: "All changes of mHM with each release."
-toc_levels: 1..2
 ---
 
 Check out the whole development of mHM in the [GitLab repository](https://git.ufz.de/mhm/mhm).

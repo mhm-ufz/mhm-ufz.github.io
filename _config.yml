@@ -131,6 +131,8 @@ defaults:
       sidebar:
         nav: about
       layout: single
+    kramdown:
+      toc_levels: 1..1
 
   # _posts
   - scope:
