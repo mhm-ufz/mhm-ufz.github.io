@@ -4,8 +4,6 @@ classes: wide
 author_profile: false
 title: "Publications"
 excerpt: "Publications using mHM."
-kramdown:
-  toc_levels: 1..2
 ---
 
 Please refer to the main model by citing [Samaniego et al. (2010)](https://doi.org/10.1029/2008WR007327), [Kumar et al. (2013)](https://doi.org/10.1029/2012WR012195) and [Thober et al. (2019)](https://doi.org/10.5194/gmd-12-2501-2019):
