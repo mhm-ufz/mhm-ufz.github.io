@@ -33,13 +33,20 @@ feature_row_1:
     url: "/about/releases/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - image_path: /assets/images/previews/meet.png
-    alt: "Community"
-    title: "Wholesome Community"
-    excerpt: "mHM has an open community always interested in discussions."
-    url: "https://github.com/mhm-ufz/mhm/discussions"
+  # - image_path: /assets/images/previews/meet.png
+  #   alt: "Community"
+  #   title: "Wholesome Community"
+  #   excerpt: "mHM has an open community always interested in discussions."
+  #   url: "https://github.com/mhm-ufz/mhm/discussions"
+  #   btn_class: "btn--primary"
+  #   btn_label: "Learn more"
+  - image_path: /assets/images/previews/workshop.png
+    alt: "mHM Workshop 2025"
+    title: "mHM Workshop 2025"
+    excerpt: "mHM team is proudly announcing the upcoming 2025 mHM Workshop."
+    url: "https://mhm-ufz.org/news/2025-04-24-workshop"
     btn_class: "btn--primary"
-    btn_label: "Learn more"
+    btn_label: "Learn more..."
 ---
 
 {% include feature_row id="feature_row_1" %}

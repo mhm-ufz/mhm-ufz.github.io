@@ -15,6 +15,24 @@ Sebastian Müller:
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:sebastian.mueller@ufz.de"
 
+Stephan Thober:
+  name   : "Stephan Thober"
+  avatar : "/assets/authors/ThoberSte.png"
+  bio    : "I'm a Group leader at the Department for Computational Hydrosystems within the Helmholtz Centre for Environmental Research (UFZ) in Leipzig."
+  links: 
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/StephanThober"
+    - label: "UFZ"
+      icon: "fas fa-graduation-cap"
+      url: "https://www.ufz.de/index.php?de=38099"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:stephan.thober@ufz.de"
+    - label: "BlueSky"
+      icon: "fab fa-fw fa-user"
+      url: "https://bsky.app/profile/stephanthober.bsky.social"
+
 mHM Admin:
   name   : "mHM Admin"
   avatar : "/assets/authors/mHM_admin.png"
