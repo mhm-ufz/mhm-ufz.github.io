@@ -30,7 +30,7 @@ Stephan Thober:
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:stephan.thober@ufz.de"
     - label: "BlueSky"
-      icon: "fa-brands fa-bluesky"
+      icon: "fab fa-fw fa-bluesky"
       url: "https://bsky.app/profile/stephanthober.bsky.social"
 
 mHM Admin:
