@@ -8,6 +8,73 @@ excerpt: "All changes of mHM with each release."
 Check out the whole development of mHM in the [GitLab repository](https://git.ufz.de/mhm/mhm).
 
 
+## mHM v5.13.2 (Oct 2025)
+
+### Enhancements
+- add netcdf support for morphological input data ([!183](https://git.ufz.de/mhm/mhm/-/merge_requests/183))
+- updated FORCES to v0.7.1 to solve orderpack issue with huge arrays ([!177](https://git.ufz.de/mhm/mhm/-/merge_requests/177))
+- flood plain calculation is expensive and only required for processCase = 1, so we now skip it for case 2 and 3 ([!177](https://git.ufz.de/mhm/mhm/-/merge_requests/177))
+- namelists refactored to be represented as derived types ([!131](https://git.ufz.de/mhm/mhm/-/merge_requests/131))
+- add the outputs `L1_melt`, `L1_rain`, `L1_snow` and `L1_Throughfall` to mHM wrapper ([!176](https://git.ufz.de/mhm/mhm/-/merge_requests/176))
+
+### Changes
+- reverting to default parameters used within HICAM project ([!190](https://git.ufz.de/mhm/mhm/-/merge_requests/190))
+- `Optimization` namelist: set documented defaults for optimization config ([!186](https://git.ufz.de/mhm/mhm/-/merge_requests/186))
+- updated Python bindings and better CLI ([!192](https://git.ufz.de/mhm/mhm/-/merge_requests/192))
+- logos are now CC-BY([!171](https://git.ufz.de/mhm/mhm/-/merge_requests/171), [!172](https://git.ufz.de/mhm/mhm/-/merge_requests/172), [!173](https://git.ufz.de/mhm/mhm/-/merge_requests/173))
+
+### Bugfixes
+- MPI: better use statements with preprocessing to not confuse the cmake dependency generator ([!188](https://git.ufz.de/mhm/mhm/-/merge_requests/188))
+- netcdf output: make y-axis bounds decreasing, since y-axis is top-down (CF-conventions) ([!191](https://git.ufz.de/mhm/mhm/-/merge_requests/191))
+- mRM: add runoff for all sinks, not only the last in the list ([!194](https://git.ufz.de/mhm/mhm/-/merge_requests/194))
+
+
+## mHM v5.13.1 (Aug 2023)
+
+### Enhancements
+- Meteo Coupling ([!161](https://git.ufz.de/mhm/mhm/-/merge_requests/161))
+  - added coupling capabilities for meteo data to mHM
+  - new namelist `coupling` in `mhm.nml` with the following entries:
+    - `case`: 0 or 1 to dis-/enable coupling, 0 by default
+    - `meteo_timestep`: 1 or 24 to set the coupling meteo time-step in hours, 0 by default
+    - `meteo_time_ref_endpoint`: bool, whether the time-stamp of the coupled meteo data refers to the endpoint of the time interval, .false. by default
+    - `meteo_expect_pre`: bool, whether precipitation is expected from the coupling, .false. by default
+    - `meteo_expect_temp`: bool, whether temperature is expected from the coupling, .false. by default
+    - `meteo_expect_pet`: bool, whether PET is expected from the coupling, .false. by default
+    - `meteo_expect_tmin`: bool, whether daily min. temperature is expected from the coupling, .false. by default
+    - `meteo_expect_tmax`: bool, whether daily max. temperature is expected from the coupling, .false. by default
+    - `meteo_expect_netrad`: bool, whether net radiation is expected from the coupling, .false. by default
+    - `meteo_expect_absvappress`: bool, whether absolute vapour pressure is expected from the coupling, .false. by default
+    - `meteo_expect_windspeed`: bool, whether windspeed is expected from the coupling, .false. by default
+    - `meteo_expect_ssrd`: bool, whether short wave radiation is expected from the coupling, .false. by default
+    - `meteo_expect_strd`: bool, whether long wave radiation is expected from the coupling, .false. by default
+    - `meteo_expect_tann`: bool, whether annual mean air temperature is expected from the coupling, .false. by default
+  - new namelist entry in `directories_mHM`:
+    - `dir_meteo_header`: folder containing the ascii header for level2, to be used when precipitation is coupled and not present, by default `<dir_Precipitation>`
+
+- Python bindings ([!161](https://git.ufz.de/mhm/mhm/-/merge_requests/161))
+  - added unit-tests for coupling meteo data
+  - added `get_mask` to get domain mask for selected level
+  - added `compressed` argument to `get_variable` to get flat array
+  - added `set_meteo` routine to set meteo-data for current time-step (uses new `mhm.set.meteo` low level function)
+  - added `mhm.model.config_coupling` to set coupling configuration as an alternative to the `coupling` namelist
+  - added `mhm.get.number_of_horizons` to get the number of horizons of the current setup
+
+- Python setup ([!163](https://git.ufz.de/mhm/mhm/-/merge_requests/163))
+  - switching to [scikit-build-core](https://scikit-build-core.readthedocs.io) als build backend to be future-prove
+  - force using the [Ninja build system](https://ninja-build.org), fixing the [conda feedstock ninja patch](https://github.com/conda-forge/mhm-feedstock/blob/a77b4c0dae25bfcc3e77e87f6c5cdec8dff6339f/recipe/conda_force_ninja.patch#L7)
+  - mhm console script now always included
+  - slightly restructured python package to separate python files from wrapper for clean wheels
+  - editable installs more stable now
+  - cleaned up env-var configs for python installation
+
+### Bugfixes
+
+- reset verbosity level when finalizing model
+- Cmake: fixed compiling issue with Python bindings on MacOS using clang ([see conda feedstock patch](https://github.com/conda-forge/mhm-feedstock/blob/a77b4c0dae25bfcc3e77e87f6c5cdec8dff6339f/recipe/conda_clang_fixes.patch#L7))
+- Documentation: now built with doxygen 1.9.7 for better type documentations and some minor fixes ([!167](https://git.ufz.de/mhm/mhm/-/merge_requests/167))
+
+
 ## mHM v5.13.0 (May 2023)
 
 ### Enhancements
