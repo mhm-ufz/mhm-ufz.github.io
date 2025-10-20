@@ -18,11 +18,11 @@ guides:
   - title: "Guides"
     url: guides/
     children:
-      - title: "Install on Windows 10"
+      - title: "Install on Windows 11"
         url: /guides/install-win/
       - title: "Install on Linux / MacOS"
         url: /guides/install-unix/
-      - title: "Compile Instructions"
+      - title: "Compilation Guide"
         url: /guides/compile/
 
 about:
