@@ -116,5 +116,5 @@ ncview test_domain/output_b1/mHM_Fluxes_States.nc
 
 ## Next steps
 
-- Follow the [Linux / macOS guide](install-unix) for additional Conda tips that also apply inside WSL.
-- Consult the [Compilation Guide](compile) if you need to build mHM from source on Windows or WSL.
+- Follow the [Linux / macOS guide](../install-unix) for additional Conda tips that also apply inside WSL.
+- Consult the [Compilation Guide](../compile) if you need to build mHM from source on Windows or WSL.

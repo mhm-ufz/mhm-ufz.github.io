@@ -56,4 +56,4 @@ If you prefer a GUI viewer such as [Panoply](https://www.giss.nasa.gov/tools/pan
 
 ## 5. Building from source
 
-If you plan to compile the development version of mHM, follow the dependency setup described in the [Compilation Guide](compile) instead of the simple runtime environment above.
+If you plan to compile the development version of mHM, follow the dependency setup described in the [Compilation Guide](../compile) instead of the simple runtime environment above.

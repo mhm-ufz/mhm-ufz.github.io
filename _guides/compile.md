@@ -10,7 +10,7 @@ excerpt: "General instructions on how to compile mHM from source."
 
 Compiling mHM from source lets you track the latest development version, apply custom patches, and fine-tune build options such as MPI or OpenMP support.
 The instructions below assume you use Conda (via [Miniforge](https://github.com/conda-forge/miniforge)) to manage compilers and libraries on every platform.
-If you only need the pre-built release, follow the platform-specific installation guides instead: [Windows 11](install-win) or [Linux / macOS](install-unix).
+If you only need the pre-built release, follow the platform-specific installation guides instead: [Windows 11](../install-win) or [Linux / macOS](../install-unix).
 
 ## Recommended tooling
 
