@@ -2,250 +2,152 @@
 permalink: /guides/compile/
 toc: true
 toc_sticky: true
-title: "Compile Instructions"
-excerpt: "General instructions on how to compile mHM."
+title: "Compilation Guide"
+excerpt: "General instructions on how to compile mHM from source."
 ---
 
-The section 'Dependencies' lists the general requirements
-for the compilation. The section 'System-dependent dependency installation'
-gives some instructions on how to install these dependencies on Windows,
-some Linux-distributions and MacOS.
-Conda based dependency installation is described in the section 'Conda dependent installation'.
+# Overview
 
+Compiling mHM from source lets you track the latest development version, apply custom patches, and fine-tune build options such as MPI or OpenMP support.
+The instructions below assume you use Conda (via [Miniforge](https://github.com/conda-forge/miniforge)) to manage compilers and libraries on every platform.
+If you only need the pre-built release, follow the platform-specific installation guides instead: [Windows 11](install-win) or [Linux / macOS](install-unix).
 
-## Dependencies
+## Recommended tooling
 
-To clone and compile mHM you need at least the following:
+- [Visual Studio Code](https://code.visualstudio.com/) with the [Modern Fortran](https://marketplace.visualstudio.com/items?itemName=fortran-lang.linter-gfortran) extension for syntax highlighting, linting, and CMake integration.
+- Conda environments created with Miniforge for isolated dependency stacks.
+- Git for version control and collaboration.
 
-* Fortran compiler: We support [gfortran](https://gcc.gnu.org/fortran/), [nagfor](https://www.nag.com/content/nag-fortran-compiler) and [ifort](https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html)
-* Build system: We support [make](https://www.gnu.org/software/make/) and [ninja](https://ninja-build.org/)
-* [cmake](https://cmake.org/): Software for build automation
-* [NetCDF-Fortran](https://github.com/Unidata/netcdf-fortran): NetCDF I/O for Fortran
-* [git](https://git-scm.com/): version control system
-* (optional) [fypp](https://github.com/aradi/fypp): Fortran pre-processor written in Python
+## Dependency summary
 
+To build mHM you need the following tools and libraries:
 
-## System-dependent dependency installation
+- Fortran compiler (`gfortran`, `ifort`, or `nagfor`); the examples below use GNU compilers.
+- C compiler (`gcc`, `clang`, or MSVC) for C interoperability libraries.
+- Build system (`ninja` or `make`).
+- [CMake](https://cmake.org/) 3.18 or newer.
+- [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) to locate NetCDF and other libraries.
+- [NetCDF-Fortran](https://github.com/Unidata/netcdf-fortran) (the library, not just the command-line tools).
+- [fypp](https://github.com/aradi/fypp) if you want to regenerate pre-processed sources.
+- Git, curl/wget, and other developer utilities as needed.
 
-After you installed all dependencies on your system you can proceed with cloning and compiling.
+## Prepare dependencies with Conda
 
+The commands below create dedicated build environments. Feel free to reuse the runtime environments from the installation guides if you already have the required packages.
 
-### Unix (Linux / MacOS)
+### Linux / macOS / WSL
 
-1. MacOS with [homebrew](https://brew.sh) available:
-    ```bash
-    brew install git gcc netcdf cmake
-    ```
-
-1. Ubuntu, Mint and other apt-get based systems with matching repositories:
-    ```bash
-    sudo apt-get install git gfortran netcdf-bin libnetcdf-dev libnetcdff-dev cmake
-    ```
-
-2. Archlinux:
-    ```bash
-    sudo pacman -S git gcc-libs netcdf-fortran cmake
-    ```
-
-3. yum based systems (CentOS, OpenSuse):
-    ```bash
-    sudo yum -y install git gcc-gfortran netcdf-fortran cmake
-    ```
-
-### Windows
-
-On Windows 10 and later we recommend to use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (WSL) to be able to use Linux by e.g. [installing Ubuntu](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10) there.
-
-Easiest way to do so is:
-
-1. install the [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)
-2. open the Windows Terminal and type:
-    ```bash
-    wsl --install -d ubuntu
-    ```
-
-3. Open Ubuntu from the new entry in the start menu
-
-Then you can follow the install instructions for Ubuntu from above.
-
-If you rather want to use [Cygwin](https://www.cygwin.com/)
-(tool providing Linux functionality on Windows), step-by-step guidelines on
-how to install all Cygwin libraries can be viewed in [this youtube video](https://youtu.be/FGJOcYEzbP4)
-created by Mehmet Cüneyd Demirel (Istanbul Technical University).
-
-
-### Module systems
-
-If you are on a module system, load the modules gcc or intel depending on your
-favorite compiler. Then, load the modules netcdf-fortran and cmake.
-
-These modules will have system specific names, environments, etc.
-You may use `module spider` to find the right packages and the
-right dependencies, potentially use corresponding wiki pages.
-
-
-#### On EVE (the cluster at the UFZ)
-
-A set of load-scripts is provided in `hpc-module-loads` (see the [repository](https://git.ufz.de/chs/HPC-Fortran-module-loads) for more details), to load all needed modules for specific compilers:
-
-- Example: GNU 7.3 compiler (`foss/2018b` Toolchain):
-  ```bash
-  source hpc-module-loads/eve.gcc73
-  ```
-  or (MPI support)
-  ```bash
-  source hpc-module-loads/eve.gcc73MPI
-  ```
-
-
-## Conda dependent installation
-
-The simplest way to compile this project on your local computer is to use a [conda](https://docs.conda.io/en/latest/) environment (on Linux (including WSL) or MacOS) provided by [Miniforge](https://github.com/conda-forge/miniforge) to install NetCDF, a Fortran compiler, make, cmake.
-
-On Windows we recommend to use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (WSL) to be able to use Linux (see above) and set up conda there.
-
-You can get the latest version of **Miniforge** with (for Linux/MacOS/WSL):
 ```bash
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh
-bash Miniforge3-$(uname)-$(uname -m).sh
+conda create -n mhm-dev -c conda-forge compilers pkg-config cmake make ninja netcdf-fortran fypp git
+conda activate mhm-dev
 ```
 
-To create a (local) conda environment with all dependencies type the following:
+- The `compilers` metapackage pulls in recent GNU/Clang toolchains including `gfortran`, `gcc`, and `g++`.
+- `make` and `ninja` are both installed so you can choose your preferred generator.
+- On macOS you may need to allow the Conda-provided toolchain by running `xcode-select --install` once if requested.
+
+### Windows 11 (Miniforge)
+
 ```bash
-conda create -y --prefix ./fortran_env
-conda activate ./fortran_env
-conda install -y git cmake make fortran-compiler netcdf-fortran
+conda create -n mhm-dev -c conda-forge gfortran_win-64 gcc_win-64 pkg-config cmake ninja netcdf-fortran fypp git
+conda activate mhm-dev
 ```
 
-Then you can proceed with cloning and compiling.
+- `gfortran_win-64` provides the Fortran compiler; `gcc_win-64` supplies a matching GNU C/C++ toolchain compatible with the NetCDF libraries.
+- `ninja` is required because CMake performs best on Windows with the Ninja generator.
+- If you prefer Microsoft Visual C++ instead of the GNU toolchain, install the *Build Tools for Visual Studio* separately and ensure `cl.exe` is available in the developer command prompt before calling CMake.
 
+### Keep environments organised
 
-## Cloning the repository
+- Update packages with `conda update --all -n mhm-dev`.
+- Deactivate the environment when finished: `conda deactivate`.
+- Remove it with `conda remove -n mhm-dev --all` if you want to start over.
+- If Git is already available on your system, you can omit it from the `conda create` command.
 
-First you need to clone the repository (if you already have `git`, otherwise see below):
+## Alternative dependency sources (optional)
+
+You can also install the required dependencies via system package managers:
+
+- **macOS (Homebrew):**
+  ```bash
+  brew install git gcc netcdf cmake ninja pkg-config fypp
+  ```
+- **Ubuntu, Debian, or other APT-based distributions:** use the official repositories or build newer compiler and NetCDF versions from source if necessary.
+- **Cluster module systems:** load appropriate compiler, NetCDF, pkg-config, and CMake modules before building.
+
+The Conda approach remains the most portable, especially on shared workstations and Windows.
+
+## Clone the repository
+
 ```bash
 git clone https://git.ufz.de/mhm/mhm.git
+cd mhm
 ```
 
-This will give you a new folder `mhm/` containing the whole repository. You can go into it by:
+To build a specific release, check it out before configuring:
+
 ```bash
-cd mhm/
+git checkout v5.12.0
 ```
 
-If you then want to compile a specific version (different from the latest development version), you can check that out with e.g.:
+Replace the version tag with the release you require.
+
+## Configure and build
+
+You can either use the helper scripts maintained in the repository or run CMake manually.
+
+### Using helper scripts
+
 ```bash
-git checkout v5.11.2
+source CI-scripts/compile              # Release build
+source CI-scripts/compile_debug        # Debug build
+source CI-scripts/compile_MPI          # Release + MPI
+source CI-scripts/compile_OpenMP       # Release + OpenMP
 ```
 
-Afterwards you can continue with the compilation.
+Each script creates a build directory (for example `release/`) and produces the corresponding executable (`mhm`, `mhm_debug`, `mhm_mpi`, …).
+Ensure your Conda environment is active before invoking the script so the compilers and libraries are discovered.
 
+### Running CMake manually
 
-## Compilation commands
-
-It could be necessary to set your desired fortran compiler with an environment variable, e.g.:
 ```bash
-export FC=gfortran
-```
+export FC=$(which gfortran)  # Optional: override the Fortran compiler explicitly
 
-We prepared a set of scripts to automatize the build and compilation process to generate an executable in the root directory with the following naming scheme:
-
-- Release version `mhm`:
-  ```bash
-  source CI-scripts/compile
-  ```
-- Debug version `mhm_debug`:
-  ```bash
-  source CI-scripts/compile_debug
-  ```
-- Release version with MPI support `mhm_mpi`:
-  ```bash
-  source CI-scripts/compile_MPI
-  ```
-- Debug version with MPI support `mhm_mpi_debug`:
-  ```bash
-  source CI-scripts/compile_MPI_debug
-  ```
-- Release version with OpenMP support `mhm_openmp`:
-  ```bash
-  source CI-scripts/compile_OpenMP
-  ```
-- Debug version with OpenMP support `mhm_openmp_debug`:
-  ```bash
-  source CI-scripts/compile_OpenMP_debug
-  ```
-
-Then you can find an executable `mhm` (or `mhm[_mpi|_openmp][_debug]`) in the current folder.
-You can execute it with:
-```bash
-./mhm
-```
-
-
-## Installation
-
-To install mhm after compilation, i.e. make it available as a command `mhm`, you can do the following (assuming you used the release compile script, otherwise replace `release` with the respective build folder):
-```bash
-cmake --install release
-```
-
-If you need to provide a prefix, where to install it, you can just pass one. For example, if you used a conda environment for compilation, you can also install mhm there with:
-```bash
-cmake --install release --prefix $CONDA_PREFIX
-```
-
-
-## Compilation without Internet
-
-Starting with version 5.12, mHM is depending on [FORCES](https://git.ufz.de/chs/forces/), our Fortran library for Computational Environmental Systems.
-This library is downloaded on the fly by [CPM](https://github.com/cpm-cmake/CPM.cmake), the cmake package manager.
-
-If you don't want to download it indirectly, know you wont have internet during your development or you want to work on routines provided by FORCES, you can place a copy of the FORCES repository in the root of your cloned mHM repository by e.g.:
-```bash
-git clone https://git.ufz.de/chs/forces.git
-```
-The new folder `forces/` will be automatically recognized during compilation as described above and nothing will be downloaded.
-
-If you just want a specific version (see `src/CMakeLists.txt` for the currently used one), do this:
-```bash
-git clone --branch v0.3.2 --depth 1 https://git.ufz.de/chs/forces.git
-```
-
-If you have already cloned FORCES somewhere else, you can also provide a path to this repository. You can do this with all mentioned compile scripts, e.g.:
-```bash
-source CI-scripts/compile -DCPM_forces_SOURCE=<path/to/your/forces/repo>
-```
-
-For example, if you have cloned FORCES next to mhm, this could look like this:
-```bash
-source CI-scripts/compile -DCPM_forces_SOURCE=../forces
-```
-
-
-## Additional CMake infos
-
-The presented compile scripts all just execute two cmake commands with a specific set of configuration flags.
-The basic cmake workflow, to configure and compile in a `build/` folder, is:
-```bash
-cmake -B build
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
-You can control all `cmake` options by passing them as directives staring with `-D` to the cmake configuration.
-For example for debug configuration, you can do the following:
+- On Windows add `-G Ninja` to the first command to select the Ninja generator:
+  ```bash
+  cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+  cmake --build build
+  ```
+- Enable optional features by adding `-DMHM_ENABLE_MPI=ON`, `-DMHM_ENABLE_OPENMP=ON`, or other CMake cache variables as needed.
+- Regenerate the build system after changing compiler-related environment variables.
+
+## Install the executable (optional)
+
+To make the executable available as a command inside your Conda environment:
+
 ```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --install build --prefix "$CONDA_PREFIX"
 ```
 
-To configure the build interactively, you can also use [ccmake](https://cmake.org/cmake/help/latest/manual/ccmake.1.html) (command line tool) or the [CMake GUI](https://cmake.org/cmake/help/latest/manual/cmake-gui.1.html) (graphical user interface).
-Check their respective documentation for further information.
-To use `ccmake` you can do the following:
+Replace `build` with the actual build directory if you used the helper scripts (for example `release`).
+
+## Verify the build
+
+Run the standard test sequence from the root of the repository or any working directory after activating the environment where you installed mHM:
+
 ```bash
-cmake -B build
-ccmake build
+mhm-download
+mhm test_domain/
+ncview test_domain/output_b1/mHM_Fluxes_States.nc
 ```
 
-Then set your desired options and re-configure your build (by pressing `c`).
-Afterwards build you project as always by executing:
-```bash
-cmake --build build --parallel
-```
+If `ncview` is not available on your platform, open the NetCDF file with a GUI tool such as Panoply instead.
+
+## Next steps
+
+- Keep the Conda environment for subsequent development or create project-specific environments if you maintain multiple branches.
+- Consult the repository documentation and `CMakeLists.txt` for advanced build options or integration with HPC environments.
