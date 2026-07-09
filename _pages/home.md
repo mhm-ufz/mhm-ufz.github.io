@@ -41,10 +41,10 @@ feature_row_1:
   #   btn_class: "btn--primary"
   #   btn_label: "Learn more"
   - image_path: /assets/images/previews/workshop.png
-    alt: "mHM Workshop 2025"
-    title: "mHM Workshop 2025"
-    excerpt: "mHM team is proudly announcing the upcoming 2025 mHM Workshop."
-    url: "https://mhm-ufz.org/news/2025-04-24-workshop"
+    alt: "mHM Workshop 2026"
+    title: "mHM Workshop 2026"
+    excerpt: "mHM team is proudly announcing the upcoming 2026 mHM Workshop."
+    url: "https://mhm-ufz.org/news/2026-07-09-workshop"
     btn_class: "btn--primary"
     btn_label: "Learn more..."
 ---
